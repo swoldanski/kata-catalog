@@ -19,7 +19,7 @@ class Character():
             - Damage is subtracted from Health
             - When damage received exceeds current Health, Health becomes 0 and the character dies
         """
-        self.health = max(0, self.health-damage)
+        self.health = max(0, self.health-(damage))
         if self.health == 0:
             self.alive = False
 
@@ -30,7 +30,7 @@ class Character():
             - Healing cannot raise health above 1000
         """
         if self.alive == True:
-            self.health = min(1000, self.health+health)
+            self.health = min(1000, self.health+abs(health))
 
     def __repr__(self) -> str:
         return f"Character(name={self.name}, health={self.health}, level={self.level}, alive={self.alive})"

@@ -3,6 +3,7 @@ Feature: All Characters, when created, have:
     - Level, starting at 1
     - May be Alive or Dead, starting Alive (Alive may be a true/false)
 
+
   Scenario: Create new character
     Given a character enters the world with the following attributes
 

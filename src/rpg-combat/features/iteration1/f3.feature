@@ -32,9 +32,9 @@ Feature: A Character can Heal a Character.
       | health |
       | 100    |
       | 1000   |
-      | 100   |
-      | 10   |
-      | 1   |
+      | 100    |
+      | 10     |
+      | 1      |
 
     Then the character health is
       | health |

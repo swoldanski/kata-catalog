@@ -16,7 +16,7 @@ Prerequisites:
 
 Prepare environment:
 
-    pip -m venv .venv
+    python -m venv .venv
     . .venv/Scripts/activate
     pip install -r requirements.txt
 
