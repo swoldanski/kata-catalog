@@ -1,6 +1,8 @@
 from behave import *
+from hamcrest import assert_that, equal_to, equal_to_ignoring_case, is_, is_not
 
 from app.models.character import Character
+
 
 @given(u'a character enters the world with the following attributes')
 def step_impl(context):
@@ -13,29 +15,33 @@ def step_impl(context):
 def step_impl(context):
     for row in context.table:
         for character in context.characters:
-            assert str(character.level)==row['level']
-            assert str(character.health)==row['health']
-            assert str(character.alive).lower()==row['alive'].lower()
+            assert_that(str(character.level), equal_to(row['level']))
+            assert_that(str(character.health), equal_to(row['health']))
+            assert_that(str(character.alive),
+                        equal_to_ignoring_case(row['alive']))
 
-@when(u'the character receives damage')
+
+@ when(u'the character receives damage')
 def step_impl(context):
     for character in context.characters:
         for row in context.table:
             character.receive_damage(int(row['damage']))
 
 
-@then(u'the character health is')
+@ then(u'the character health is')
 def step_impl(context):
     for row in context.table:
         for character in context.characters:
-            assert str(character.health)==row['health']
+            assert_that(str(character.health), equal_to(row['health']))
 
-@then(u'the character is Dead')
+
+@ then(u'the character is Dead')
 def step_impl(context):
     for character in context.characters:
-        assert character.alive==False
+        assert_that(character.alive, is_not(True))
 
-@when(u'the character receives health')
+
+@ when(u'the character receives health')
 def step_impl(context):
     for character in context.characters:
         for row in context.table:
